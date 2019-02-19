@@ -39,7 +39,9 @@ class App extends Component {
     }
 
     onDismis(id){
-    console.log(id);
+    const isNotid = (item)=> item.userId !==id;
+    const updatedlist= this.state.user.filter(isNotid)
+    this.setState({user:updatedlist});
     }
 
   render() {

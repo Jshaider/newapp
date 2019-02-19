@@ -42,7 +42,7 @@ class App extends Component {
     console.log(id);
     }
 
-  render() {fdsfsdf
+  render() {
 
     return (
         <div className="App">

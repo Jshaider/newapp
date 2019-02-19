@@ -35,8 +35,13 @@ class App extends Component {
       this.state={
         user,
       };
-
+      this.onDismis=this.onDismis.bind(this);
     }
+
+    onDismis(id){
+    console.log(id);
+    }
+
   render() {
 
     return (
@@ -47,6 +52,9 @@ class App extends Component {
             <a href={item.address}>{item.name}</a>
             <span>{item.eyecolor}</span>
             <span>{item.height}</span>
+            <span>
+              <button onClick={()=>this.onDismis(item.userId)} type="button"> DISMISS</button>
+            </span>
           </div>)}
 
         </div>

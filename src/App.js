@@ -42,6 +42,7 @@ class App extends Component {
     const isNotid = (item)=> item.userId !==id;
     const updatedlist= this.state.user.filter(isNotid)
     this.setState({user:updatedlist});
+
     }
 
   render() {

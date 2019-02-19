@@ -35,10 +35,10 @@ class App extends Component {
       this.state={
         user,
       };
-      this.onDismis=this.onDismis.bind(this);
+      // this.onDismis=this.onDismis.bind(this);
     }
 
-    onDismis(id){
+    onDismis=(id)=>{
     const isNotid = (item)=> item.userId !==id;
     const updatedlist= this.state.user.filter(isNotid)
     this.setState({user:updatedlist});
@@ -48,6 +48,7 @@ class App extends Component {
 
     return (
         <div className="App">
+          <h1>{text}</h1>
           {this.state.user.map(item=> <div key={item.userId}>
             <span>{item.name}</span>
             <span>{item.age}</span>

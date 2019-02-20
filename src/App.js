@@ -57,21 +57,51 @@ class App extends Component {
     return (
         <div className="App">
           <h1>{text}</h1>
-          <form>
-            <input type='text' onChange={this.onSearchChange} value={searchTerm}></input></form>
-          {user.filter(searchUser(searchTerm)).map(item=> <div key={item.userId}>
+          <Search
+          value={searchTerm}
+          onChange={this.onSearchChange}
+          />
+          <Table
+              user={user}
+              pattern={searchTerm}
+              onDismis={this.onDismis}
+          />
+
+        </div>
+    );
+  }
+}
+
+class Search extends Component {
+  render() {
+    const { value, onChange } = this.props;
+    return (
+        <form>
+          <input
+              type="text"
+              value={value}
+              onChange={onChange}
+          />
+        </form>
+    );
+  }
+}
+class Table extends Component{
+  render(){
+    const { user, pattern, onDismis } = this.props;
+    return (
+        <div>
+          {user.filter(searchUser(pattern)).map(item=> <div key={item.userId}>
             <span>{item.name}</span>
             <span>{item.age}</span>
             <a href={item.address}>{item.name}</a>
             <span>{item.eyecolor}</span>
             <span>{item.height}</span>
             <span>
-              <button onClick={()=>this.onDismis(item.userId)} type="button"> DISMISS</button>
-            </span>
-          </div>)}
-
+              <button onClick={()=>onDismis(item.userId)} type="button"> DISMISS</button>
+            </span> </div>)}
         </div>
-    );
+    )
   }
 }
 export default App;

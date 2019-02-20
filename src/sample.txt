@@ -1,0 +1,12 @@
+<form>
+            <input type='text' onChange={this.onSearchChange} value={searchTerm}></input></form>
+
+        {user.filter(searchUser(searchTerm)).map(item=> <div key={item.userId}>
+            <span>{item.name}</span>
+            <span>{item.age}</span>
+            <a href={item.address}>{item.name}</a>
+            <span>{item.eyecolor}</span>
+            <span>{item.height}</span>
+            <span>
+              <button onClick={()=>this.onDismis(item.userId)} type="button"> DISMISS</button>
+            </span> </div>)}

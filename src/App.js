@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
+import Table from './Table.js';
+import Search from './Search';
 import './App.css';
 
 const text= "Welcome To The Road To Learn React";
@@ -29,8 +31,6 @@ const user= [
     userId: '01',
   },
 ];
-const searchUser= searchTerm =>(item)=>
-  item.name.toLowerCase().includes(searchTerm.toLowerCase());
 
 class App extends Component {
   constructor(props) {
@@ -72,36 +72,5 @@ class App extends Component {
   }
 }
 
-class Search extends Component {
-  render() {
-    const { value, onChange } = this.props;
-    return (
-        <form>
-          <input
-              type="text"
-              value={value}
-              onChange={onChange}
-          />
-        </form>
-    );
-  }
-}
-class Table extends Component{
-  render(){
-    const { user, pattern, onDismis } = this.props;
-    return (
-        <div>
-          {user.filter(searchUser(pattern)).map(item=> <div key={item.userId}>
-            <span>{item.name}</span>
-            <span>{item.age}</span>
-            <a href={item.address}>{item.name}</a>
-            <span>{item.eyecolor}</span>
-            <span>{item.height}</span>
-            <span>
-              <button onClick={()=>onDismis(item.userId)} type="button"> DISMISS</button>
-            </span> </div>)}
-        </div>
-    )
-  }
-}
+
 export default App;

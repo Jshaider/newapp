@@ -5,40 +5,20 @@ import Search from './Search';
 import './App.css';
 
 const text= "Welcome To The Road To Learn React";
-const user= [
-  {
-    name: 'summer',
-    age: 30,
-    eyecolor: 'brown',
-    height: 5.6,
-    address: 'www.facebook.com/summer',
-    userId: '04',
-  },
-  {
-    name: 'winter',
-    age: 20,
-    eyecolor: 'dark brown',
-    height: 4.9,
-    address: 'www.facebook.com/winter',
-    userId: '02',
-  },
-  {
-    name: 'autum',
-    age: 32,
-    eyecolor: 'yellow',
-    height: 6.0,
-    address: "www.facebook.com/autum",
-    userId: '01',
-  },
-];
+const DEFAULT_QUERY = 'redux';
+const PATH_BASE = 'https://hn.algolia.com/api/v1';
+const PATH_SEARCH = '/search';
+const PARAM_SEARCH = 'query=';
+const URL=`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
 
 class App extends Component {
   constructor(props) {
       super(props);
       this.state={
-        searchTerm:'',
-        user,
+        searchTerm:DEFAULT_QUERY,
+        user:null,
       };
+      this.setSearchTopStories=this.setSearchTopStories.bind(this);
       this.onDismis=this.onDismis.bind(this);
       this.onSearchChange=this.onSearchChange.bind(this);
     }
@@ -51,9 +31,22 @@ class App extends Component {
     onSearchChange(e){
       this.setState({searchTerm:e.target.value});
     }
+    setSearchTopStories(result){
+      this.setState({user:result})
+    }
+
+    componentDidMount() {
+        const { searchTerm } = this.state;
+        fetch(URL)
+            .then(response => response.json())
+            .then(result => this.setSearchTopStories(result))
+            .catch(error => error);
+
+    }
 
   render() {
     const {searchTerm,user}=this.state;
+      if (!user) { return null; };
     return (
         <div className="page">
           <h1>{text}</h1>
@@ -63,7 +56,7 @@ class App extends Component {
           onChange={this.onSearchChange}
           >Search: </Search></div>
           <Table
-              user={user}
+              user={user.hits}
               pattern={searchTerm}
               onDismis={this.onDismis}
           />

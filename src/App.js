@@ -60,7 +60,7 @@ class App extends Component {
           <Search
           value={searchTerm}
           onChange={this.onSearchChange}
-          />
+          >Search: </Search>
           <Table
               user={user}
               pattern={searchTerm}

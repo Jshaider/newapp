@@ -4,11 +4,8 @@ import React, { Component } from 'react';
 const searchUser= pattern =>(item)=>
     item.name.toLowerCase().includes(pattern.toLowerCase());
 
-class Table extends Component{
-    render(){
-        const { user, pattern, onDismis } = this.props;
-        return (
-            <div>
+const Table=({ user, pattern, onDismis }) =>
+    (<div>
                 {user.filter(searchUser(pattern)).map(item=> <div key={item.userId}>
                     <span>{item.name}</span>
                     <span>{item.age}</span>
@@ -18,8 +15,5 @@ class Table extends Component{
                     <span>
               <button onClick={()=>onDismis(item.userId)} type="button"> DISMISS</button>
             </span> </div>)}
-            </div>
-        )
-    }
-}
+    </div>)
 export default Table;

@@ -29,28 +29,37 @@ const user= [
     userId: '01',
   },
 ];
+const searchUser= searchTerm =>(item)=>
+  item.name.toLowerCase().includes(searchTerm.toLowerCase());
+
 class App extends Component {
   constructor(props) {
       super(props);
       this.state={
+        searchTerm:'',
         user,
       };
-      // this.onDismis=this.onDismis.bind(this);
+      this.onDismis=this.onDismis.bind(this);
+      this.onSearchChange=this.onSearchChange.bind(this);
     }
 
-    onDismis=(id)=>{
+    onDismis(id){
     const isNotid = (item)=> item.userId !==id;
     const updatedlist= this.state.user.filter(isNotid)
     this.setState({user:updatedlist});
-
+    }
+    onSearchChange(e){
+      this.setState({searchTerm:e.target.value});
     }
 
   render() {
-
+    const {searchTerm,user}=this.state;
     return (
         <div className="App">
           <h1>{text}</h1>
-          {this.state.user.map(item=> <div key={item.userId}>
+          <form>
+            <input type='text' onChange={this.onSearchChange} value={searchTerm}></input></form>
+          {user.filter(searchUser(searchTerm)).map(item=> <div key={item.userId}>
             <span>{item.name}</span>
             <span>{item.age}</span>
             <a href={item.address}>{item.name}</a>

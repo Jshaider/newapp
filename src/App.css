@@ -19,6 +19,12 @@
   text-align: center;
   font-size: 16px;
 }
+.loading{
+  display: block;
+  font-size: xx-large;
+  border: darksalmon;
+  -webkit-border-radius: 33px;
+}
 .table-row {
 
   display: flex;

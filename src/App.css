@@ -19,6 +19,18 @@
   text-align: center;
   font-size: 16px;
 }
+.root{
+  width: 250px;
+  border: #222222 solid 3px;
+  display: inline-block;
+  float:left;
+}
+.container{
+  width:250px;
+  border: darksalmon solid 3px;
+  display: inline-block;
+  float:right;
+}
 .loading{
   display: block;
   font-size: xx-large;

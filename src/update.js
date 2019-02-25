@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import logo from './logo.svg';
+import './rotate.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class Update extends Component{
@@ -59,12 +60,11 @@ class Update extends Component{
         const res =this.state.searchResult;
         return(
             <div>
-                <img src={logo}/>
-                <div className='border'>
-                    <form className='text-center m-auto small'>
-                        <input type='text' onChange={this.searchTask} placeholder='search' className='small'/>
-                    </form>
-                    <form onSubmit={this.onClick} className="text-center m-auto small" >
+                <div className='bg-dark card-body alert'>
+                    <h1 className='text-center text-white-50'>Welcome</h1>
+                </div>
+                <div className='border alert badge-success'>
+                    <form onSubmit={this.onClick} className="text-center m-auto small m-md-1" >
                         <span>New Task: </span>
                         <input
                             className='align-content-lg-center small'
@@ -73,11 +73,11 @@ class Update extends Component{
                             value={this.state.fieldtext}
                             onChange={this.fieldTextUpdate}
                         />
-                        <button type='submit' className='button-active btn-outline-dark btn-sm btn-primary'> submit</button>
+                        <button type='submit' className='button-active btn-outline-dark btn-sm btn-primary m-md-2'> submit</button>
                     </form>
                     <hr/>
-                    <div className='align-content-center card-body d-block font-italic border'>
-                    <table className='table-striped table-hover m-auto table-bordered small'>
+                    <div className='alert align-content-center card-body d-block font-italic border'>
+                    <table className='table-striped table-hover m-auto table-bordered small alert'>
                         <thead>
                             <tr className='table-danger text-center'>
                                 <th className='px-3'>ID</th>
@@ -95,11 +95,14 @@ class Update extends Component{
                             )}
                         </tbody>
                     </table>
+                    <form className='text-center m-auto small m-md-3'>
+                        <input type='text' onChange={this.searchTask} placeholder='search' className='small'/>
+                    </form>
                     </div>
                     <hr/>
                 </div>
-                <div className='border text-uppercase bg-secondary small'>
-                    {res != null ? <ul className='list-group-item-dark'>{res.map(item=> <li>{item.name}</li>)}</ul> :<h4> search result </h4>}
+                <div className='border text-uppercase bg-secondary small alert'>
+                    {res != null ? <ul className='list-group-item-dark'>{res.map(item=> <li>{item.name}</li>)}</ul> :<img src={logo} className='App-logo'/>}
                 </div>
             </div>
         );

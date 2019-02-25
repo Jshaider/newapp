@@ -5,7 +5,6 @@ import Search from './Search';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-const text= "Welcome To The Road To Learn React";
 const DEFAULT_QUERY = 'stephen';
 const DEFAULT_HPP = '100';
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
@@ -77,10 +76,9 @@ class App extends Component {
     const {searchTerm,user}=this.state;
     const page = (user && user.page) || 0;
     return (
-        <div className="page">
-          <h1>{text}</h1>
+        <div className="bg-dark card-body alert">
           <div className="interactions">
-              <button onClick={() => this.fetchNewStories(searchTerm, page + 1)}>
+              <button onClick={() => this.fetchNewStories(searchTerm, page + 1)} className='btn-sm btn-light'>
                   More
               </button>
           <Search

@@ -4,11 +4,12 @@ import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Main from './main'
 //import TodoApp from './todo';
 import Update from './update'
 // ReactDOM.render(<TodoApp />, document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('container'));
-ReactDOM.render(<Update />, document.getElementById('root'));
+ReactDOM.render(<Main />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

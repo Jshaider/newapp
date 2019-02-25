@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import Table from './Table.js';
 import Search from './Search';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 const text= "Welcome To The Road To Learn React";

@@ -59,7 +59,7 @@ class Update extends Component{
     render(){
         const res =this.state.searchResult;
         return(
-            <div>
+            <div style={{marginLeft:470, marginRight:470}}>
                 <div className='bg-dark card-body alert'>
                     <h1 className='text-center text-white-50'>Welcome</h1>
                 </div>
